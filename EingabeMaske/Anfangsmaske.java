@@ -10,7 +10,7 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 	Container c;
 	JPanel p[];
 	JButton b[];
-	Maske m;
+	ZwiFenster m;
 	HR1 m2;
 	public Anfangsmaske() {
 		c = getContentPane();
@@ -31,7 +31,7 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b[0]) {
-			m = new Maske();
+			m = new ZwiFenster();
 			m.setTitle("Eingabemaske");
 			m.setSize(500,500);
 			m.setVisible(true);
@@ -43,4 +43,36 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 		}
 		
 	}
+	
+	class ZwiFenster extends JFrame implements ActionListener {
+		Container c;
+		JComboBox<String> b;
+		Maske m;
+		JPanel p;
+		public ZwiFenster() {
+			c = getContentPane();
+			p = new JPanel();
+			b = new JComboBox<String>(erstb);
+			b.setSelectedIndex(0);
+			b.addActionListener(this);
+			p.add(b);
+			c.add(p, BorderLayout.CENTER);
+		}
+		String[] erstb = {"Erstbewerbung", "Einsicht "};
+		@Override
+		public void actionPerformed(ActionEvent e) {
+		if(b.getSelectedItem() == "Erstbewerbung") {
+			m = new Maske();
+			m.setSize(500,500);
+			m.setTitle("Eingabemaske");
+			m.setVisible(true);
+			m.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setVisible(false);
+			dispose();
+		}
+		}
+		
+	}
 }
+
+

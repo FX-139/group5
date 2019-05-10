@@ -16,8 +16,12 @@ public class Maske extends JFrame implements ActionListener{
 	String vorname;
 	String gb;
 	String wohnort;
+	String em;
+	static int nr;
+	Maske2 m;
 
 	public Maske() {
+		nr = nr + 1;
 		j = new JPanel[12];
 		for(int i = 0; i < 12; i++) {
 			j[i] = new JPanel();
@@ -32,7 +36,7 @@ public class Maske extends JFrame implements ActionListener{
 		}
 		f = new JTextField[4];
 		for (int i = 0; i < 4; i++) {
-			f[i] = new JTextField(" ", 10);
+			f[i] = new JTextField("", 10);
 		}
 		b = new JButton("Fertig");
 		c = getContentPane();
@@ -83,13 +87,12 @@ public class Maske extends JFrame implements ActionListener{
 			System.out.println(vorname + " " + name);
 			System.out.println(gb);
 			System.out.println("Wohnt in " + wohnort);
+			m = new Maske2();
+			m.setTitle("Noteneingabe");
+			m.setSize(500,500);
+			m.setVisible(true);
+			m.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		}
 	}
-	
-	
-	
-	
-	
-	
 	
 }
