@@ -11,6 +11,7 @@ public class Ablauf {
 		m.setTitle("Auswahlfenster");
 		m.setVisible(true);
 		m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//Die beiden ersten "Bewerber" im Hardcode geschrieben 
 	}
 
 }
