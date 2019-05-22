@@ -5,11 +5,11 @@ import javax.swing.*;
 
 @SuppressWarnings("unused")
 public class Ablauf {
-	static int nr;
+	static int nr = 1;
 	Datenbank [] db;
 
 	public static void main(String[] args) {
-		Datenbank[] db = new Datenbank[3];
+		Datenbank[] db = new Datenbank[4];
 		// Zunächst die Dummie-Bewerber einsetzen in die Datenbank
 		// Der erste Bewerber mit der Bewerbernr 1
 		db[0] = new Datenbank();
@@ -33,15 +33,31 @@ public class Ablauf {
 		db[1].name = "Lustig";
 		db[1].em = "lustig.peter@mail.de";
 		db[1].wohnort = "11.03.2000";
-		db[1].fokus = "Wirtschaft";
-		db[1].ma = 2.0;
-		db[1].wi = 1.7;
-		db[1].in = 2.7;
-		db[1].en = 2.0;
-		db[1].de = 2.3;
-		db[1].sp = 3.0;
+		db[1].fokus = "Informatik";
+		db[1].ma = 2.3;
+		db[1].wi = 1.3;
+		db[1].in = 2.0;
+		db[1].en = 2.7;
+		db[1].de = 2.0;
+		db[1].sp = 3.3;
 		db[1].nr = nr;
 		db[1].errechneScore();
+		nr = nr + 1;
+		// Der dritte Bewerber mit der Bewerbernr 3
+		db[2] = new Datenbank();
+		db[2].vorname = "Peter";
+		db[2].name = "Lustig";
+		db[2].em = "lustig.peter@mail.de";
+		db[2].wohnort = "11.03.2000";
+		db[2].fokus = "Wirtschaft";
+		db[2].ma = 2.0;
+		db[2].wi = 1.7;
+		db[2].in = 2.7;
+		db[2].en = 2.0;
+		db[2].de = 2.3;
+		db[2].sp = 3.0;
+		db[2].nr = nr;
+		db[2].errechneScore();
 		nr = nr + 1;
 		// Erstellt erstes Fenster
 		Anfangsmaske m = new Anfangsmaske(db);

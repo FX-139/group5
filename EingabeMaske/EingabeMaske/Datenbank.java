@@ -30,14 +30,9 @@ public class Datenbank {
 		return ("Der Bewerber " + vorname + " " + name + " ist geboren am " + geb + " und wohnhaft in " + wohnort + "."
 				+ "\n Sein persönlicher Bewerberscore beträgt " + score + ".");
 	}
-}
-
-//
-int max = 0;
-for(int i = 1; i < db.length(); i++) {
 	
-	if(db[i-1].score < db[i].score) {
-		max = i;
+	public String scoreToString() {
+		return (vorname + " " + name + " mit einem Score von " + score + ".");
 	}
 }
-JButton b[0](db[max].scoreToString());
+

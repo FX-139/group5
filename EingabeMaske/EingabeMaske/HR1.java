@@ -46,7 +46,7 @@ public class HR1 extends JFrame implements ActionListener{
 		if(e.getSource() == b[0]) {
 			m1 = new HR2(fach[0].toString(), db);
 		}else {
-			int m = 1;
+			int m = 0;
 			m1 = new HR2(fach[1].toString(), m, db);
 		}
 		}
