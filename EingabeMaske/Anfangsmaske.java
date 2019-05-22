@@ -12,7 +12,18 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 	JButton b[];
 	ZwiFenster m;
 	HR1 m2;
-	public Anfangsmaske() {
+	int nr;
+	Datenbank[] db;
+	public Anfangsmaske(Datenbank[] _db, int _nr) {
+		db = _db;
+		nr = _nr;
+		//WENN DATENBANK VOLL; HIER MUSS STOPPER REIN
+		
+		
+		
+		
+		
+		
 		c = getContentPane();
 		c.setLayout(new GridLayout(2,1));
 		p = new JPanel[2];
@@ -39,7 +50,9 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 			setVisible(false);
 			dispose();
 		} else {
-			m2 = new HR1();
+			m2 = new HR1(db);
+			setVisible(false);
+			dispose();
 		}
 		
 	}
@@ -62,7 +75,7 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		if(b.getSelectedItem() == "Erstbewerbung") {
-			m = new Maske();
+			m = new Maske(db, nr);
 			m.setSize(500,500);
 			m.setTitle("Eingabemaske");
 			m.setVisible(true);
