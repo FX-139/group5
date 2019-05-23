@@ -16,6 +16,7 @@ public class Maske3 extends JFrame implements ActionListener {
 	JButton b[];
 	Datenbank db[];
 	Maske2 m;
+	double noten[] = new double[9];
 	int ch[];
 	int nr, fo;
 	public Maske3(String[] _da, Maske2 _m, Datenbank[] _db, int[] _ch, int _nr, int _fo) {
@@ -125,36 +126,42 @@ public class Maske3 extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		for(int i = 0; i < 9; i++) {
+			if(f[i].getText().equals("")) 
+				noten[i] = 0;
+			else
+				noten[i] = Double.valueOf(f[i].getText());
+		}
 		if(e.getSource() == b[0]) {
 			db[nr] = new Datenbank(ch);
 			for(int i = 0; i < 9; i++) {
 				if(ch[i] == 1) {
 					if(i== 0)
-						db[nr].ma1 = Double.valueOf(f[0].getText());
+						db[nr-2].ma1 = noten[i];
 					else if(i== 1)
-						db[nr].ma2 = Double.valueOf(f[0].getText());
+						db[nr-2].ma2 = noten[i];
 					else if(i== 2)
-						db[nr].st = Double.valueOf(f[0].getText());
+						db[nr-2].st = noten[i];
 					else if(i== 3)
-						db[nr].en = Double.valueOf(f[0].getText());
+						db[3].en = noten[i];
 					else if(i== 4)
-						db[nr].wi = Double.valueOf(f[0].getText());
+						db[3].wi = noten[i];
 					else if(i== 5)
-						db[nr].in = Double.valueOf(f[0].getText());
+						db[nr-2].in = noten[i];
 					else if(i== 6)
-						db[nr].sp = Double.valueOf(f[0].getText());
+						db[nr-2].sp = noten[i];
 					else if(i== 7)
-						db[nr].wp = Double.valueOf(f[0].getText());
+						db[nr-2].wp = noten[i];
 					else if(i== 8)
-						db[nr].fl = Double.valueOf(f[0].getText());
+						db[nr-2].fl = noten[i];
 				}
 			}
 			if(fo == 0)
-				db[nr].fokus = "Wirtschaft";
+				db[nr-2].fokus = "Wirtschaft";
 			else 
-				db[nr].fokus = "Informatik";
-			db[nr-1].errechneScore();
-			Anfangsmaske m2 = new Anfangsmaske(db, 0);
+				db[nr-2].fokus = "Informatik";
+			db[nr-2].errechneScore();
+			Anfangsmaske m2 = new Anfangsmaske(db);
 			m2.setSize(500,500);
 			m2.setTitle("Anfangsmaske");
 			m2.setVisible(true);

@@ -14,6 +14,23 @@ public class Anfangsmaske extends JFrame implements ActionListener {
 	HR1 m2;
 	int nr;
 	Datenbank[] db;
+	public Anfangsmaske(Datenbank[] _db) {
+		db = _db;
+		c = getContentPane();
+		c.setLayout(new GridLayout(2,1));
+		p = new JPanel[2];
+		b = new JButton[2];
+		p[0] = new JPanel();
+		p[1] = new JPanel();
+		b[0] = new JButton("Bewerber");
+		b[1] = new JButton("HR-Angestellte/r");
+		p[0].add(b[0]);
+		p[1].add(b[1]);
+		c.add(p[0]);
+		c.add(p[1]);
+		b[0].addActionListener(this);
+		b[1].addActionListener(this);
+	}
 	public Anfangsmaske(Datenbank[] _db, int _nr) {
 		db = _db;
 		nr = _nr;

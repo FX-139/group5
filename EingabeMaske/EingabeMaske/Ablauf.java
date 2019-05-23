@@ -28,7 +28,7 @@ public class Ablauf {
 		db[0].wp = 2.3;
 		db[0].sp = 3.0;
 		db[0].nr = nr;
-		db[0].errechneScore();
+		db[0].score = 0.0;
 		nr = nr + 1;
 		// Der zweite Bewerber mit der Bewerbernr 2
 		db[1] = new Datenbank(auswahl);
@@ -63,6 +63,7 @@ public class Ablauf {
 		db[2].sp = 3.0;
 		db[2].nr = nr;
 		db[2].errechneScore();
+		System.out.println(db[2].scoreToString());
 		nr = nr + 1;
 		// Erstellt erstes Fenster
 		Anfangsmaske m = new Anfangsmaske(db, nr);
