@@ -7,23 +7,41 @@ public class Datenbank {
 	public String wohnort;
 	public String em;
 	public String fokus;	// Wirtschaft oder Informatik 
-	public double ma;
-	public double wi;
-	public double in;
-	public double en;
-	public double de;
-	public double sp;
-	public double ps;
-	public double nr;
+	public double ma1;		// Mathe I
+	public double ma2;		// Mathe II
+	public double st;		// Statistik
+	public double en;		// Englisch
+	public double wi;		// Wirtschaft
+	public double in;		// Informatik
+	public double sp;		// Spanisch
+	public double wp;		// Wirtschaftspsychologie
+	public double fl;		// Das persönlich ausgewählte Fach
+	double noten[] = {ma1, ma2, st, en, wi, in, sp, wp, fl};
+	double faWi[] = {1.5,1.5,1.5,1.5,2,0.4,0.8,0.8,0};
+	double faIn[] = {1.5,1.5,1.5,0.8,0.2,2,0,0,0};
+	public int nr;
+	public int[] ch;
 	public double score;
+	
+	public Datenbank(int[] _ch) {
+		ch = _ch; 
+	}
 	public void errechneScore() {
+		double sc = 0;		// Der Summand für die Schnitt-Errechnung
+		double dv = 0;			// Der Divident am Ende der Schnitt-Errechnung
 		if(fokus == "Wirtschaft") {
-			score = ((1.5 * ma) + (2 * wi) + (0.7 * in) + 
-					 (1 * en) + (0.5 * de) + (0.3 * sp)) / 6;
+			for(int i = 0; i < noten.length; i++) {
+				sc = sc + (noten[i] * faWi[i]);
+				dv = dv + (faWi[i] * ch[i]);
+			}
+			score = sc / dv;
 		}
 		if(fokus == "Informatik") {
-			score = ((1.8 * ma) + (0.5 * wi) + (2 * in) + 
-					 (1.2 * en) + (0.3 * de) + (0.2 * sp)) / 6;
+			for(int i = 0; i < noten.length; i++) {
+				sc = sc + (noten[i] * faIn[i]);
+				dv = dv + (faIn[i] * ch[i]);
+			}
+			score = sc / dv;
 		}
 	}
 	public String toString() {
@@ -32,7 +50,7 @@ public class Datenbank {
 	}
 	
 	public String scoreToString() {
-		return (vorname + " " + name + " mit einem Score von " + score + ".");
+		return ("Der Bewerber " + vorname + " " + name + " mit der Nummer " + nr + " hat folgenden Score: " + score + ".");
 	}
 }
 

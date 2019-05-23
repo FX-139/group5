@@ -1,14 +1,12 @@
 package EingabeMaske;
 
 import static org.junit.Assert.*;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -30,13 +28,15 @@ public class Maske extends JFrame implements ActionListener {
 	String gb;
 	String wohnort;
 	String em;
+	int nr;
 	JComboBox<String> bo;
 	String[] fach = { "Wirtschaft", "Informatik" };
 	Maske2 m;
 	Datenbank[] db;
 
-	public Maske(Datenbank[] _db) {
+	public Maske(Datenbank[] _db, int _nr) {
 		db = _db;
+		nr = _nr;
 		// Erstellen des 1. Eingabe-Fensters
 		// 12 Panels ( 4:3 )
 		j = new JPanel[9];
@@ -72,7 +72,7 @@ public class Maske extends JFrame implements ActionListener {
 		l[2] = new JLabel("<html><font color='black'>Geburtsdatum:	");
 		l[3] = new JLabel("<html><font color='black'>Wohnort:		");
 		l[4] = new JLabel("<html><font color='black'>E-Mail:		");
-		l[5] = new JLabel("<html><font color='black'>BewerberNr:  " + Ablauf.nr);
+		l[5] = new JLabel("<html><font color='black'>BewerberNr:  " + nr);
 		l[6] = new JLabel("<html><font color='black'>Fachrichtung	");
 		j[0].add(l[0]);
 		j[0].add(l[1]);
@@ -99,12 +99,13 @@ public class Maske extends JFrame implements ActionListener {
 
 	@Test
 	public void testConsol() {
-		Maske m = new Maske(db);
+		Maske m = new Maske(db, nr);
 		assertEquals(m.c, m.getContentPane());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String daten[]  = {f[0].getText(), f[1].getText(), f[2].getText(), f[3].getText()};
 		if (e.getSource() == b) {
 			if (f[0].getText().equals("") || f[1].getText().equals("") || f[2].getText().equals("")
 					|| f[3].getText().equals("") || f[4].getText().equals("")) {
@@ -113,14 +114,9 @@ public class Maske extends JFrame implements ActionListener {
 				fe.setTitle("Fehlermeldung");
 				fe.setVisible(true);
 			} else {
-				db[3] = new Datenbank();
-				db[3].vorname = f[0].getText();
-				db[3].name = f[1].getText();
-				db[3].geb = f[2].getText();
-				db[3].wohnort = f[3].getText();
-				db[3].em = f[4].getText();
-				Ablauf.nr = Ablauf.nr + 1;
-				m = new Maske2();
+				int i = bo.getSelectedIndex();
+				nr = nr + 1;
+				m = new Maske2(db, this, daten, nr, i);
 				m.setTitle("Datenabfrage");
 				m.setSize(500, 500);
 				m.setVisible(true);
